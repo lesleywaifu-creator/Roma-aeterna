@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Roma Aeterna — Rise of Rome</title>
+<style>
+:root{--bg:#080a0d;--p:#14191f;--p2:#1b2229;--gold:#d8ae59;--cream:#f4e4bc;--muted:#99978f;--line:#39362f;--red:#7f3838;--green:#477a55;--blue:#3f6681}
+*{box-sizing:border-box}html,body{margin:0;background:#050607;color:#eee7d9;font-family:Georgia,serif}body{display:flex;justify-content:center}.app{width:min(100vw,560px);min-height:100vh;background:linear-gradient(#11161b,#080a0d);position:relative;box-shadow:0 0 70px #000;overflow:hidden}
+header{height:72px;display:flex;align-items:center;padding:9px 11px;gap:9px;background:linear-gradient(#252b31,#11161b);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:8}.logo{font-size:19px;color:var(--cream);letter-spacing:1px}.sub{font:9px Arial;color:var(--muted);margin-top:2px}.stats{margin-left:auto;display:flex;gap:4px;font:10px Arial}.stat{padding:5px 6px;border:1px solid #39352d;background:#090b0e;border-radius:7px}
+.screen{display:none;padding-bottom:82px}.screen.active{display:block}.hero{height:202px;background:linear-gradient(180deg,#0000 35%,#090c10 100%),url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1000&q=80') center/cover}.heroText{padding:126px 14px 0}.heroText h1{margin:0;color:#fff0c6;font-size:33px;text-shadow:0 2px 5px #000}.heroText p{margin:3px 0;font:11px Arial;color:#c8c0b0}
+.pad{padding:11px;display:grid;gap:10px}.card{background:linear-gradient(145deg,#1b2229,#11161b);border:1px solid var(--line);border-radius:12px;padding:12px;box-shadow:0 5px 15px #0005}.card h3{margin:0 0 7px;color:#f0ce80;font-size:16px}.muted{font:12px Arial;color:var(--muted);line-height:1.45}.row{display:flex;justify-content:space-between;align-items:center;gap:8px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.big{font-size:24px;color:#fff0c4}.btn{border:1px solid #765b2e;background:linear-gradient(#5a472a,#382a18);color:#fff0c5;border-radius:8px;padding:9px 10px;font-weight:bold;cursor:pointer}.btn:active{transform:translateY(1px)}.green{background:#24462f;border-color:#4d7d59}.red{background:#4a2222;border-color:#784141}.blue{background:#243e52;border-color:#4b6b84}.bar{height:8px;background:#080a0c;border:1px solid #292d30;border-radius:8px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#b88c40,#f5d989)}.tag{font:9px Arial;background:#292f35;color:#d0c8b6;border-radius:5px;padding:4px 6px}.unit{display:flex;gap:9px;align-items:center;padding:9px 0;border-bottom:1px solid #2a3034}.unit:last-child{border-bottom:0}.ico{width:42px;height:42px;border-radius:9px;background:#322821;display:grid;place-items:center;font-size:21px;flex:none}
+.world{height:calc(100vh - 72px);min-height:610px;position:relative;overflow:hidden;background:linear-gradient(145deg,#496e50,#77885b 43%,#315d68 44% 100%)}.world:before{content:"";position:absolute;inset:0;opacity:.13;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:35px 35px}.land{position:absolute;border:1px solid #ffffff55;border-radius:40%;padding:7px;font:bold 9px Arial;text-shadow:0 1px 2px #000}.node{position:absolute;width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#13191de8;border:2px solid #dcb45d;box-shadow:0 0 0 4px #0003;cursor:pointer}.enemy{border-color:#a74b4b}.ally{border-color:#619873}.mapbox{position:absolute;left:11px;right:11px;bottom:12px;background:#11161bea;border:1px solid #604c2b;border-radius:13px;padding:12px}
+.notice{border-left:3px solid var(--gold);padding-left:9px}.choice{display:block;width:100%;text-align:left;margin-top:8px}.modal{display:none;position:fixed;inset:0;background:#000c;z-index:20;align-items:flex-end}.modalbox{width:min(560px,100%);max-height:88vh;overflow:auto;background:#151a20;border:1px solid #68512d;border-radius:18px 18px 0 0;padding:17px}.log{height:125px;overflow:auto;background:#090c0f;border-radius:8px;padding:8px;font:11px Arial;color:#bdb8ad}.tech{padding:11px;border:1px solid #38352e;border-radius:10px;background:#11171c}.locked{opacity:.42}.bottom{position:fixed;bottom:0;width:min(100vw,560px);height:76px;background:#11161b;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:10}.nav{border:0;background:none;color:#7f7c74;font:10px Arial}.nav.on{color:#f0ce80}.nav b{display:block;font-size:21px;margin-bottom:3px}.toast{display:none;position:fixed;left:50%;bottom:88px;transform:translateX(-50%);z-index:30;background:#1c2329;border:1px solid #75592d;border-radius:9px;padding:10px 13px;font:12px Arial;max-width:92%;text-align:center}.small{font:10px Arial;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div><div class="logo">ROMA AETERNA</div><div class="sub">RISE OF ROME • TURN <span id="turn">1</span></div></div>
+  <div class="stats"><span class="stat">🪙 <b id="gold">1200</b></span><span class="stat">🌾 <b id="food">900</b></span><span class="stat">👥 <b id="pop">12480</b></span></div>
+</header>
+
+<section id="city" class="screen active">
+<div class="hero"><div class="heroText"><h1>Roma</h1><p>Capital of Latium • Prosperity <b id="pros">42</b>% • Health <b id="health">58</b></p></div></div>
+<div class="pad">
+<div class="card"><div class="row"><h3>Capital Level</h3><b id="citylevel">III</b></div><div class="bar"><div id="prosbar" class="fill" style="width:42%"></div></div><p class="muted">Grow the capital, attract citizens, and create the economic engine that lets the Republic expand.</p></div>
+
+<div class="grid2">
+<div class="card"><h3>🏛 Forum</h3><div class="big">+<span id="tax">25</span></div><div class="muted">coins / turn</div><button class="btn" onclick="upgrade('forum')">Upgrade · <span id="forumCost">300</span></button></div>
+<div class="card"><h3>🌾 Granary</h3><div class="big">+<span id="grain">32</span></div><div class="muted">food / turn</div><button class="btn" onclick="upgrade('granary')">Upgrade · <span id="granaryCost">260</span></button></div>
+<div class="card"><h3>🛡 Barracks</h3><div class="big"><span id="army">92</span></div><div class="muted">army power</div><button class="btn red" onclick="upgrade('barracks')">Train · <span id="barracksCost">230</span></button></div>
+<div class="card"><h3>💧 Aqueduct</h3><div class="big"><span id="aqueduct">1</span></div><div class="muted">health infrastructure</div><button class="btn blue" onclick="upgrade('aqueduct')">Build · <span id="aqueductCost">360</span></button></div>
+</div>
+
+<div class="card"><div class="row"><h3>Buildings & Districts</h3><span class="tag">CITY PLAN</span></div>
+<div class="grid3">
+<button class="btn" onclick="buildDistrict('market')">🛒<br>Market</button>
+<button class="btn" onclick="buildDistrict('temple')">🕯<br>Temple</button>
+<button class="btn" onclick="buildDistrict('arena')">🏟<br>Arena</button>
+</div><p class="muted">Special districts provide different bonuses and unlock events.</p></div>
+
+<div class="card"><div class="row"><h3>Senate Agenda</h3><span class="tag"><span id="agenda">0</span>/3</span></div><p class="muted">Complete three improvements to earn a major political reward.</p><div class="bar"><div id="agbar" class="fill" style="width:0%"></div></div></div>
+
+<div class="card"><div class="row"><div><h3>End the Turn</h3><div class="muted">Collect production, grow Rome and trigger world events.</div></div><button class="btn green" onclick="endTurn()">END TURN</button></div></div>
+</div>
+</section>
+
+<section id="world" class="screen">
+<div class="world">
+<div class="land" style="left:7%;top:17%">ETRURIA</div><div class="land" style="left:66%;top:15%">DALMATIA</div><div class="land" style="left:9%;top:58%">CAMPANIA</div><div class="land" style="left:66%;top:65%">GRAECIA</div>
+<div class="node" style="left:41%;top:41%" onclick="region('Rome')">🏛</div>
+<div class="node enemy" style="left:16%;top:30%" onclick="region('Etruria')">⚔️</div>
+<div class="node enemy" style="left:70%;top:26%" onclick="region('Dalmatia')">⚔️</div>
+<div class="node ally" style="left:74%;top:70%" onclick="region('Graecia')">⚓</div>
+<div class="node enemy" style="left:20%;top:68%" onclick="region('Campania')">🛡</div>
+<div class="mapbox"><div class="row"><div><b id="rtitle">ITALIA</b><div class="muted" id="rtext">Choose a province to inspect its resources, diplomacy and military threat.</div></div><button class="btn" onclick="region('Etruria')">Scout</button></div></div>
+</div>
+</section>
+
+<section id="armyScreen" class="screen">
+<div class="pad">
+<div class="card"><div class="row"><h3>Legio VII • The Iron Eagle</h3><span class="tag">VETERAN</span></div>
+<div class="unit"><div class="ico">🛡️</div><div style="flex:1"><b>Legionaries</b><div class="muted">120 heavy infantry • reliable line</div></div><b>52</b></div>
+<div class="unit"><div class="ico">🏹</div><div style="flex:1"><b>Auxilia</b><div class="muted">60 ranged • weak in melee</div></div><b>21</b></div>
+<div class="unit"><div class="ico">🐎</div><div style="flex:1"><b>Equites</b><div class="muted">30 cavalry • flanking</div></div><b>19</b></div>
+<button class="btn red" style="width:100%;margin-top:8px" onclick="battle()">CAMPAIGN · 100 🌾</button></div>
+<div class="card"><h3>Doctrine</h3><div class="grid2"><button class="btn" onclick="doctrine('Testudo')">Testudo<br><span class="small">+15% defence</span></button><button class="btn" onclick="doctrine('Cavalry')">Cavalry<br><span class="small">+12% attack</span></button></div></div>
+<div class="card"><h3>Campaign Log</h3><div id="log" class="log">Legio VII awaits orders.<br>• Rome is secure.<br>• Scouts report hostile activity.</div></div>
+</div>
+</section>
+
+<section id="senate" class="screen">
+<div class="pad">
+<div class="card"><div class="row"><h3>🏛 Senate of Rome</h3><b>Prestige <span id="prestige">120</span></b></div><p class="muted">The Republic is not one voice. Your choices shape which factions support the government.</p>
+<div class="unit"><div class="ico">🦅</div><div style="flex:1"><b>Patricians</b><div class="muted">Commerce • order • tax stability</div></div><button class="btn" onclick="senate('patricians')">Negotiate</button></div>
+<div class="unit"><div class="ico">🌾</div><div style="flex:1"><b>Plebeians</b><div class="muted">Food • wages • public works</div></div><button class="btn" onclick="senate('plebs')">Support</button></div>
+<div class="unit"><div class="ico">⚔️</div><div style="flex:1"><b>Generals</b><div class="muted">Army • conquest • honours</div></div><button class="btn" onclick="senate('generals')">Fund</button></div></div>
+<div class="card"><h3>Senate Standing</h3><div class="grid2"><div class="muted">Patrician influence<div class="bar"><div class="fill" style="width:61%"></div></div></div><div class="muted">Popular influence<div class="bar"><div class="fill" style="width:47%"></div></div></div></div></div>
+</div>
+</section>
+
+<section id="empire" class="screen">
+<div class="pad">
+<div class="card"><h3>📜 Research Tree</h3>
+<div class="tech"><div class="row"><b>Roman Roads</b><button class="btn" onclick="research('roads',180)">180🪙</button></div><div class="muted">Trade income +5% • army campaigns become safer.</div></div>
+<div class="tech" style="margin-top:8px"><div class="row"><b>Concrete Architecture</b><button class="btn" onclick="research('concrete',280)">280🪙</button></div><div class="muted">Building upgrades cost less • unlocks Monument chain.</div></div>
+<div class="tech locked" style="margin-top:8px"><div class="row"><b>Imperial Administration</b><span class="tag">LOCKED</span></div><div class="muted">Requires 300 prestige and 5 controlled provinces.</div></div></div>
+<div class="card"><h3>🏆 Legacy</h3><p class="muted">Control 5 provinces • reach 75 prosperity • build 3 special districts • survive 30 turns.</p><div class="bar"><div id="legacy" class="fill" style="width:15%"></div></div><p class="muted">Provinces <b id="controlled">1</b>/5 • Districts <b id="districts">0</b>/3 • Turns <b id="survived">0</b>/30</p></div>
+<div class="card"><h3>💾 Campaign</h3><p class="muted">Progress is saved automatically in this browser.</p><button class="btn" onclick="resetGame()">Start New Campaign</button></div>
+</div>
+</section>
+
+<div id="toast" class="toast"></div>
+<div id="modal" class="modal"><div class="modalbox"><div class="row"><h2 id="mt" style="margin:0;color:#f0ce80">Event</h2><button class="btn" onclick="closeModal()">×</button></div><p id="mx" class="muted"></p><div id="mc"></div></div></div>
+
+<nav class="bottom">
+<button class="nav on" onclick="show('city',this)"><b>🏛</b>City</button>
+<button class="nav" onclick="show('world',this)"><b>🗺</b>World</button>
+<button class="nav" onclick="show('armyScreen',this)"><b>⚔</b>Army</button>
+<button class="nav" onclick="show('senate',this)"><b>⚖</b>Senate</button>
+<button class="nav" onclick="show('empire',this)"><b>📜</b>Empire</button>
+</nav>
+</div>
+
+<script>
+const base={gold:1200,food:900,pop:12480,pros:42,health:58,prestige:120,turn:1,survived:0,controlled:1,districts:0,forum:1,granary:1,barracks:1,aqueduct:1,army:92,agenda:0,doctrine:'Testudo',research:[]};
+let s=JSON.parse(localStorage.getItem('romaAeternaV3')||'null')||structuredClone(base), selected=null, currentEvent=null;
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem('romaAeternaV3',JSON.stringify(s))}
+function sync(){
+for(const k of ['gold','food','pop','pros','health','prestige','turn','survived','controlled','districts','army','agenda']) if($(k)) $(k).textContent=Math.floor(s[k]);
+$('prosbar').style.width=Math.max(0,Math.min(100,s.pros))+'%';$('tax').textContent=18+s.forum*7;$('grain').textContent=24+s.granary*8;
+$('forumCost').textContent=300+s.forum*120;$('granaryCost').textContent=260+s.granary*110;$('barracksCost').textContent=230+s.barracks*120;$('aqueductCost').textContent=360+s.aqueduct*160;
+$('citylevel').textContent=['I','II','III','IV','V'][Math.min(4,Math.floor(s.pros/25))];
+$('agbar').style.width=(s.agenda/3*100)+'%';
+let legacy=(s.controlled/5*40)+(s.pros/75*30)+(s.districts/3*15)+(s.survived/30*15);$('legacy').style.width=Math.min(100,legacy)+'%';save()
+}
+function toast(t){let x=$('toast');x.textContent=t;x.style.display='block';clearTimeout(window.t);window.t=setTimeout(()=>x.style.display='none',2400)}
+function show(id,el){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$(id).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.remove('on'));el.classList.add('on')}
+function upgrade(type){
+let cost={forum:300+s.forum*120,granary:260+s.granary*110,barracks:230+s.barracks*120,aqueduct:360+s.aqueduct*160}[type];
+if(s.gold<cost)return toast('The treasury cannot afford this.');
+s.gold-=cost;s[type]++;s.agenda=Math.min(3,s.agenda+1);
+if(type==='forum'){s.pros+=4;s.pop+=300}
+if(type==='granary'){s.food+=150;s.pros+=2}
+if(type==='barracks'){s.army+=18;s.pros+=1}
+if(type==='aqueduct'){s.health+=9;s.pros+=3}
+if(s.agenda===3){s.gold+=450;s.prestige+=80;toast('Senate Agenda complete: +450 coins and +80 prestige.')}else toast(type[0].toUpperCase()+type.slice(1)+' improved.');
+sync()
+}
+function buildDistrict(type){
+let cost={market:380,temple:320,arena:600}[type];
+if(s.gold<cost)return toast('Need '+cost+' coins.');
+if((type==='arena')&&s.pros<55)return toast('The Arena requires 55 prosperity.');
+s.gold-=cost;s.districts++;s.agenda=Math.min(3,s.agenda+1);
+if(type==='market'){s.gold+=80;s.pros+=4;toast('Market district opened: commerce grows.')}
+if(type==='temple'){s.prestige+=28;s.pros+=3;toast('Temple consecrated: prestige rises.')}
+if(type==='arena'){s.prestige+=50;s.pros+=7;s.army+=6;toast('Arena completed: Rome celebrates!')}
+sync()
+}
+function endTurn(){
+s.turn++;s.survived++;s.gold+=18+s.forum*7+(s.research.includes('roads')?Math.floor((18+s.forum*7)*.05):0);s.food+=24+s.granary*8;s.pop+=Math.floor(70+s.health*2);
+if(s.food<450){s.pros=Math.max(0,s.pros-2);s.pop=Math.max(100,s.pop-150);toast('⚠ Grain shortage!')}else{s.pros=Math.min(100,s.pros+1)}
+if(Math.random()<.48)event();else toast('Turn '+s.turn+': production collected.');
+sync()
+}
+function region(r){
+selected=r;$('rtitle').textContent=r.toUpperCase();
+const d={Rome:'Your capital: prosperous, defended and connected to the whole Republic.',Etruria:'Metal and mountain passes. Hostile garrisons guard the frontier. Victory grants a permanent army bonus.',Dalmatia:'Timber and Adriatic ports. A difficult campaign with valuable trade potential.',Graecia:'A wealthy maritime power. Diplomacy may open trade instead of war.',Campania:'Fertile farmland. Control greatly improves food production.'}[r];$('rtext').textContent=d;
+if(r!=='Rome'){$('mc').innerHTML='<button class="btn choice" onclick="provinceAction()">Interact with '+r+'</button><button class="btn choice" onclick="closeModal()">Close</button>';$('mt').textContent=r;$('mx').textContent=d;$('modal').style.display='flex'}
+}
+function provinceAction(){
+if(selected==='Graecia'){s.gold+=220;s.prestige+=15;toast('Trade treaty signed with Graecia. +220 coins.')}
+else if(selected==='Campania'){s.food+=500;s.controlled=Math.min(5,s.controlled+1);s.prestige+=20;toast('Campania joins Rome. +500 food.')}
+else {battleProvince(selected)}
+closeModal();sync()
+}
+function battleProvince(name){
+let enemy={Etruria:70,Dalmatia:90}[name]||75, attack=s.army+(s.doctrine==='Cavalry'?12:0)+Math.random()*25;
+if(s.research.includes('roads')) attack+=8;
+if(attack>enemy){s.controlled=Math.min(5,s.controlled+1);s.prestige+=35;s.gold+=280;s.army=Math.max(30,s.army-8);log('Victory in '+name+'. The eagle flies over a new province.');toast('VICTORY — '+name+' is under Roman control.')}
+else{s.army=Math.max(25,s.army-20);s.prestige=Math.max(0,s.prestige-12);toast('Defeat at '+name+'. The legion retreats.')}
+}
+function battle(){
+if(s.food<100)return toast('Not enough food for a campaign.');
+s.food-=100;let enemy=60+Math.random()*45, attack=s.army+(s.doctrine==='Cavalry'?12:5)+(s.research.includes('roads')?8:0)+Math.random()*25;
+$('mt').textContent='Frontier Battle';$('mx').innerHTML='Roman power: <b>'+Math.floor(attack)+'</b><br>Enemy power: <b>'+Math.floor(enemy)+'</b><br><br>Choose to commit the legion.';
+$('mc').innerHTML='<button class="btn red choice" onclick="resolveBattle('+attack+','+enemy+')">COMMIT TO BATTLE</button><button class="btn choice" onclick="closeModal()">Withdraw</button>';$('modal').style.display='flex'
+}
+function resolveBattle(a,b){if(a>b){s.gold+=260;s.prestige+=30;s.controlled=Math.min(5,s.controlled+1);s.army=Math.max(30,s.army-7);log('Frontier victory. A province has been brought into Roman control.');toast('VICTORY!')}else{s.gold=Math.max(0,s.gold-150);s.prestige=Math.max(0,s.prestige-15);s.army=Math.max(25,s.army-18);log('The legion suffers losses and retreats.');toast('DEFEAT. The frontier remains hostile.')}closeModal();sync()}
+function doctrine(d){s.doctrine=d;s.prestige+=5;toast(d+' doctrine adopted.');sync()}
+function senate(w){if(w==='patricians'){s.gold+=180;s.pros=Math.max(0,s.pros-1);toast('Patrician merchants provide +180 coins.')}if(w==='plebs'){s.food+=230;s.pros+=4;toast('The grain dole improves public mood.')}if(w==='generals'){s.gold=Math.max(0,s.gold-100);s.army+=22;s.prestige+=22;toast('Generals receive funding and raise troops.')}sync()}
+function research(name,cost){if(s.research.includes(name))return toast('Already researched.');if(s.gold<cost)return toast('Not enough coins.');s.gold-=cost;s.research.push(name);s.prestige+=18;s.pros+=2;toast('Research completed: '+name+'.');sync()}
+function log(t){let x=$('log');x.innerHTML+='&lt;br&gt;• '+t;x.scrollTop=x.scrollHeight}
+function event(){
+const ev=[
+['The Etruscan Envoy','A merchant delegation offers a lucrative trade route.',['Accept · +300🪙','Refuse · +10 prestige'],['trade','refuse']],
+['Bread for Rome','A poor harvest threatens the streets.',['Import · -180🪙, +450🌾','Ration · -3 prosperity'],['grain','ration']],
+['A General’s Ambition','Your commander requests resources for a major offensive.',['Fund · -250🪙, +30 prestige','Decline · keep resources'],['fund','decline']],
+['Festival of Saturnalia','A festival could unite the city.',['Celebrate · -160🪙, +6 prosperity','Cancel · +50🪙, -2 prosperity'],['celebrate','cancel']],
+['A Plague Rumour','A frightened crowd demands immediate action.',['Fund sanitation · -220🪙, +8 health','Do nothing · -4 prosperity'],['health','ignore']]
+];currentEvent=ev[Math.floor(Math.random()*ev.length)];$('mt').textContent=currentEvent[0];$('mx').textContent=currentEvent[1];$('mc').innerHTML=currentEvent[2].map((x,i)=>`<button class="btn choice" onclick="eventChoice(${i})">${x}</button>`).join('');$('modal').style.display='flex'
+}
+function eventChoice(i){let k=currentEvent[3][i];
+if(k==='trade'){s.gold+=300;s.prestige+=8}else if(k==='refuse'){s.prestige+=10}else if(k==='grain'){if(s.gold<180)return toast('Not enough coins.');s.gold-=180;s.food+=450}else if(k==='ration'){s.pros=Math.max(0,s.pros-3)}else if(k==='fund'){if(s.gold<250)return toast('Not enough coins.');s.gold-=250;s.prestige+=30;s.army+=8}else if(k==='decline'){}else if(k==='celebrate'){if(s.gold<160)return toast('Not enough coins.');s.gold-=160;s.pros+=6}else if(k==='cancel'){s.gold+=50;s.pros=Math.max(0,s.pros-2)}else if(k==='health'){if(s.gold<220)return toast('Not enough coins.');s.gold-=220;s.health+=8;s.pros+=2}else if(k==='ignore'){s.pros=Math.max(0,s.pros-4)}
+closeModal();toast('The decision will shape Rome.');sync()
+}
+function closeModal(){$('modal').style.display='none'}
+function resetGame(){if(confirm('Start a completely new Roman campaign?')){s=structuredClone(base);sync();toast('New campaign begun.')}}
+sync();
+</script>
+</body>
+</html>
