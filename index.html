@@ -2,193 +2,181 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Roma Aeterna — Rise of Rome</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Roma Aeterna</title>
 <style>
-:root{--bg:#080a0d;--p:#14191f;--p2:#1b2229;--gold:#d8ae59;--cream:#f4e4bc;--muted:#99978f;--line:#39362f;--red:#7f3838;--green:#477a55;--blue:#3f6681}
-*{box-sizing:border-box}html,body{margin:0;background:#050607;color:#eee7d9;font-family:Georgia,serif}body{display:flex;justify-content:center}.app{width:min(100vw,560px);min-height:100vh;background:linear-gradient(#11161b,#080a0d);position:relative;box-shadow:0 0 70px #000;overflow:hidden}
-header{height:72px;display:flex;align-items:center;padding:9px 11px;gap:9px;background:linear-gradient(#252b31,#11161b);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:8}.logo{font-size:19px;color:var(--cream);letter-spacing:1px}.sub{font:9px Arial;color:var(--muted);margin-top:2px}.stats{margin-left:auto;display:flex;gap:4px;font:10px Arial}.stat{padding:5px 6px;border:1px solid #39352d;background:#090b0e;border-radius:7px}
-.screen{display:none;padding-bottom:82px}.screen.active{display:block}.hero{height:202px;background:linear-gradient(180deg,#0000 35%,#090c10 100%),url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1000&q=80') center/cover}.heroText{padding:126px 14px 0}.heroText h1{margin:0;color:#fff0c6;font-size:33px;text-shadow:0 2px 5px #000}.heroText p{margin:3px 0;font:11px Arial;color:#c8c0b0}
-.pad{padding:11px;display:grid;gap:10px}.card{background:linear-gradient(145deg,#1b2229,#11161b);border:1px solid var(--line);border-radius:12px;padding:12px;box-shadow:0 5px 15px #0005}.card h3{margin:0 0 7px;color:#f0ce80;font-size:16px}.muted{font:12px Arial;color:var(--muted);line-height:1.45}.row{display:flex;justify-content:space-between;align-items:center;gap:8px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.big{font-size:24px;color:#fff0c4}.btn{border:1px solid #765b2e;background:linear-gradient(#5a472a,#382a18);color:#fff0c5;border-radius:8px;padding:9px 10px;font-weight:bold;cursor:pointer}.btn:active{transform:translateY(1px)}.green{background:#24462f;border-color:#4d7d59}.red{background:#4a2222;border-color:#784141}.blue{background:#243e52;border-color:#4b6b84}.bar{height:8px;background:#080a0c;border:1px solid #292d30;border-radius:8px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#b88c40,#f5d989)}.tag{font:9px Arial;background:#292f35;color:#d0c8b6;border-radius:5px;padding:4px 6px}.unit{display:flex;gap:9px;align-items:center;padding:9px 0;border-bottom:1px solid #2a3034}.unit:last-child{border-bottom:0}.ico{width:42px;height:42px;border-radius:9px;background:#322821;display:grid;place-items:center;font-size:21px;flex:none}
-.world{height:calc(100vh - 72px);min-height:610px;position:relative;overflow:hidden;background:linear-gradient(145deg,#496e50,#77885b 43%,#315d68 44% 100%)}.world:before{content:"";position:absolute;inset:0;opacity:.13;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:35px 35px}.land{position:absolute;border:1px solid #ffffff55;border-radius:40%;padding:7px;font:bold 9px Arial;text-shadow:0 1px 2px #000}.node{position:absolute;width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#13191de8;border:2px solid #dcb45d;box-shadow:0 0 0 4px #0003;cursor:pointer}.enemy{border-color:#a74b4b}.ally{border-color:#619873}.mapbox{position:absolute;left:11px;right:11px;bottom:12px;background:#11161bea;border:1px solid #604c2b;border-radius:13px;padding:12px}
-.notice{border-left:3px solid var(--gold);padding-left:9px}.choice{display:block;width:100%;text-align:left;margin-top:8px}.modal{display:none;position:fixed;inset:0;background:#000c;z-index:20;align-items:flex-end}.modalbox{width:min(560px,100%);max-height:88vh;overflow:auto;background:#151a20;border:1px solid #68512d;border-radius:18px 18px 0 0;padding:17px}.log{height:125px;overflow:auto;background:#090c0f;border-radius:8px;padding:8px;font:11px Arial;color:#bdb8ad}.tech{padding:11px;border:1px solid #38352e;border-radius:10px;background:#11171c}.locked{opacity:.42}.bottom{position:fixed;bottom:0;width:min(100vw,560px);height:76px;background:#11161b;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:10}.nav{border:0;background:none;color:#7f7c74;font:10px Arial}.nav.on{color:#f0ce80}.nav b{display:block;font-size:21px;margin-bottom:3px}.toast{display:none;position:fixed;left:50%;bottom:88px;transform:translateX(-50%);z-index:30;background:#1c2329;border:1px solid #75592d;border-radius:9px;padding:10px 13px;font:12px Arial;max-width:92%;text-align:center}.small{font:10px Arial;color:var(--muted)}
+:root{--bg:#090b10;--panel:#111722;--panel2:#171e2b;--gold:#d9a441;--gold2:#f1c75b;--text:#f4f0e6;--muted:#9da6b5;--red:#9f3030;--green:#4fa96b;--blue:#3978b9}
+*{box-sizing:border-box}html,body{margin:0;background:#06070a;color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;height:100%;overflow:hidden}
+button{font:inherit;color:inherit;border:0;cursor:pointer}button:active{transform:translateY(1px)}
+#app{height:100%;display:flex;flex-direction:column;background:radial-gradient(circle at 50% 0,#20283a 0,#0a0c12 46%,#050609 100%)}
+.top{height:64px;display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid #2b3342;background:#0c1018cc;backdrop-filter:blur(8px);z-index:5}
+.brand{font-family:Georgia,serif;font-weight:800;letter-spacing:1px;color:var(--gold2);min-width:120px}.emperor{font-size:11px;color:var(--muted)}
+.res{display:flex;gap:7px;flex:1;justify-content:center;flex-wrap:wrap}.pill{background:#171d28;border:1px solid #303949;border-radius:999px;padding:6px 9px;font-size:12px;white-space:nowrap}.pill b{color:#fff}
+.main{flex:1;min-height:0;overflow:auto;padding-bottom:78px}.screen{display:none;min-height:100%;padding:14px}.screen.active{display:block}
+.nav{height:68px;display:grid;grid-template-columns:repeat(7,1fr);border-top:1px solid #2a3240;background:#0d1119;position:fixed;left:0;right:0;bottom:0;z-index:10;padding-bottom:env(safe-area-inset-bottom)}
+.nav button{background:transparent;color:#9da6b5;font-size:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.nav button.active{color:var(--gold2)}.nav .ico{font-size:21px}
+h1,h2,h3{margin:0 0 8px;font-family:Georgia,serif}h1{font-size:25px}h2{font-size:20px}h3{font-size:15px}.sub{color:var(--muted);font-size:12px}
+.card{background:linear-gradient(180deg,#171e2b,#10151e);border:1px solid #2b3444;border-radius:14px;padding:12px;box-shadow:0 8px 30px #0006}.row{display:flex;gap:10px;align-items:center}.between{justify-content:space-between}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.btn{background:linear-gradient(#dcae48,#a87120);color:#1b1205;border:1px solid #f0cb72;border-radius:9px;padding:10px 13px;font-weight:800}.btn.secondary{background:#1b2432;color:#e7ebf2;border-color:#3a4659}.btn.danger{background:#64252a;color:#fff;border-color:#a34b51}.btn.small{padding:7px 9px;font-size:11px}
+.heroCard{position:relative;overflow:hidden;min-height:185px;background:linear-gradient(135deg,#202a3b,#0f131b)}.heroArt{height:105px;border-radius:10px;background:radial-gradient(circle at 50% 35%,#b78a50 0,#6f452c 22%,#263042 42%,#11151d 72%);display:flex;align-items:center;justify-content:center;font-size:64px}.heroArt.woman{background:radial-gradient(circle at 50% 35%,#9b6b61 0,#523943 25%,#25283a 50%,#11151d 75%)}.rarity{color:var(--gold2);font-size:13px;letter-spacing:1px}.heroName{font-weight:800}.heroMeta{font-size:11px;color:var(--muted)}.tag{display:inline-block;padding:3px 6px;border:1px solid #384354;border-radius:6px;font-size:10px;color:#cbd3df}
+.statbar{height:7px;background:#2a313d;border-radius:9px;overflow:hidden}.statbar i{display:block;height:100%;background:linear-gradient(90deg,#b8812c,#f0c85d)}
+.city{position:relative;height:calc(100vh - 142px);min-height:560px;overflow:hidden;border-radius:16px;border:1px solid #303848;background:#b89061}
+#cityWorld{position:absolute;inset:0;background:
+linear-gradient(140deg,#87a95f 0 23%,transparent 23%),
+linear-gradient(35deg,#709052 0 30%,transparent 30%),
+repeating-linear-gradient(35deg,#8f6e49 0 42px,#a17e52 42px 48px),
+linear-gradient(#87a7c1,#c8b487);background-size:auto,auto,auto,100% 100%}
+.road{position:absolute;background:#b9a276;border:4px solid #7c684c;box-shadow:inset 0 0 0 2px #d7c79f}.r1{width:110%;height:65px;left:-5%;top:46%;transform:rotate(-12deg)}.r2{width:65px;height:115%;left:50%;top:-8%;transform:rotate(25deg)}.sea{position:absolute;right:0;top:0;width:29%;height:100%;background:linear-gradient(180deg,#477f98,#244f6a);border-left:6px solid #6e8b8f}.hill{position:absolute;width:230px;height:120px;border-radius:50%;background:#66804f;left:7%;top:8%;transform:rotate(-8deg);box-shadow:60px 25px 0 #71895a,130px -5px 0 #5e794b}.building{position:absolute;width:118px;min-height:84px;padding:7px;background:#efe0bd;border:3px solid #76522d;border-radius:8px;box-shadow:0 8px 12px #0005;color:#342316;text-align:center;touch-action:none}.building .roof{height:18px;background:#9d3d2d;margin:-7px -7px 6px;border-bottom:3px solid #5e251d}.building .bname{font-weight:900;font-size:12px}.building .lvl{font-size:10px;color:#6b563f}.people{position:absolute;bottom:8%;left:35%;font-size:28px;filter:drop-shadow(0 3px 2px #0005)}
+.worldMap{height:420px;border-radius:16px;border:1px solid #303848;position:relative;overflow:hidden;background:linear-gradient(150deg,#1d5369,#0d3040 42%,#142b28)}.land{position:absolute;background:#75683d;border:2px solid #c5a94f;opacity:.95}.italy{left:42%;top:16%;width:80px;height:250px;transform:rotate(15deg);clip-path:polygon(40% 0,65% 15%,45% 30%,75% 45%,52% 58%,80% 72%,55% 100%,30% 86%,43% 65%,24% 45%,38% 25%,22% 10%)}.island{width:75px;height:45px;border-radius:50%}.sicily{left:48%;top:76%;transform:rotate(-8deg)}.sardinia{left:28%;top:47%;transform:rotate(20deg);width:35px;height:80px}.node{position:absolute;width:88px;padding:6px;border-radius:10px;background:#111a20dd;border:1px solid #d5ad46;text-align:center;font-size:11px}.node b{color:#f4c85b}.n1{left:37%;top:22%}.n2{left:56%;top:35%}.n3{left:33%;top:58%}.n4{left:59%;top:68%}.n5{left:18%;top:32%}
+.battle{background:linear-gradient(#8a6849,#b99b6d 44%,#5a4534);min-height:560px;border-radius:16px;position:relative;overflow:hidden;border:1px solid #584936}.battle:before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,transparent 0 35%,#b89b6a55 35% 36%,transparent 36% 100%),repeating-linear-gradient(0deg,#0000 0 52px,#5c4936 53px,#0000 55px);opacity:.6}.battleTitle{position:absolute;top:10px;left:10px;right:10px;display:flex;justify-content:space-between;z-index:2}.fighters{position:absolute;left:10%;right:10%;top:25%;bottom:23%;display:flex;justify-content:space-between;align-items:center;z-index:2}.side{display:flex;flex-direction:column;gap:14px}.unit{width:72px;text-align:center;cursor:pointer}.unit .portrait{width:64px;height:64px;margin:auto;border-radius:50%;border:3px solid #d6a846;background:radial-gradient(circle at 50% 30%,#c49b67,#5a3c2d 40%,#1c202a 72%);display:flex;align-items:center;justify-content:center;font-size:35px}.unit.enemy .portrait{border-color:#a94848;background:radial-gradient(circle at 50% 30%,#9b6655,#4a2729 42%,#1b1a20 72%)}.unit.target .portrait{outline:4px solid #f4d56f}.hp{height:6px;background:#27252a;border-radius:6px;margin-top:4px;overflow:hidden}.hp i{display:block;height:100%;background:#56a66b}.enemy .hp i{background:#bb4d4d}.unit.dead{opacity:.28}.unit.dead .portrait{filter:grayscale(1)}.uName{font-size:9px;font-weight:700}.turn{font-size:10px;color:#fff;background:#0008;padding:2px 4px;border-radius:5px;display:inline-block}
+.battleLog{position:absolute;left:8%;right:8%;bottom:118px;min-height:46px;background:#10141acc;border:1px solid #444c58;border-radius:10px;padding:8px;font-size:11px;z-index:3}.skills{position:absolute;left:6%;right:6%;bottom:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;z-index:4}.skill{background:#192231;border:1px solid #4b5b71;border-radius:12px;padding:9px;text-align:center}.skill b{display:block;color:#f0c25b}.skill small{color:#aab3c0}
+.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;z-index:30;padding:16px}.modal.show{display:flex}.modal .card{max-width:520px;width:100%;max-height:90vh;overflow:auto}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:84px;background:#171d28;border:1px solid #556071;padding:9px 13px;border-radius:9px;z-index:50;display:none;font-size:12px}
+@media(max-width:700px){.top{height:60px}.brand{min-width:92px;font-size:14px}.res{justify-content:flex-end}.res .pill:nth-child(4){display:none}.screen{padding:9px}.grid2{grid-template-columns:1fr}.grid3{grid-template-columns:repeat(2,1fr)}.heroCard{min-height:165px}.city{height:calc(100vh - 138px);min-height:520px}.building{width:96px;min-height:70px}.building .bname{font-size:10px}.fighters{left:4%;right:4%}.unit{width:58px}.unit .portrait{width:54px;height:54px;font-size:28px}.skills{left:3%;right:3%}}
 </style>
 </head>
 <body>
-<div class="app">
-<header>
-  <div><div class="logo">ROMA AETERNA</div><div class="sub">RISE OF ROME • TURN <span id="turn">1</span></div></div>
-  <div class="stats"><span class="stat">🪙 <b id="gold">1200</b></span><span class="stat">🌾 <b id="food">900</b></span><span class="stat">👥 <b id="pop">12480</b></span></div>
+<div id="app">
+<header class="top">
+  <div><div class="brand">ROMA AETERNA</div><div class="emperor">Imperator • Lv 32</div></div>
+  <div class="res">
+    <div class="pill">🪙 <b id="gold">1.2M</b></div><div class="pill">🧱 <b id="food">835K</b></div><div class="pill">💎 <b id="gems">4,820</b></div><div class="pill">⚡ <b id="energy">18</b>/30</div>
+  </div>
 </header>
-
+<main class="main">
 <section id="city" class="screen active">
-<div class="hero"><div class="heroText"><h1>Roma</h1><p>Capital of Latium • Prosperity <b id="pros">42</b>% • Health <b id="health">58</b></p></div></div>
-<div class="pad">
-<div class="card"><div class="row"><h3>Capital Level</h3><b id="citylevel">III</b></div><div class="bar"><div id="prosbar" class="fill" style="width:42%"></div></div><p class="muted">Grow the capital, attract citizens, and create the economic engine that lets the Republic expand.</p></div>
-
-<div class="grid2">
-<div class="card"><h3>🏛 Forum</h3><div class="big">+<span id="tax">25</span></div><div class="muted">coins / turn</div><button class="btn" onclick="upgrade('forum')">Upgrade · <span id="forumCost">300</span></button></div>
-<div class="card"><h3>🌾 Granary</h3><div class="big">+<span id="grain">32</span></div><div class="muted">food / turn</div><button class="btn" onclick="upgrade('granary')">Upgrade · <span id="granaryCost">260</span></button></div>
-<div class="card"><h3>🛡 Barracks</h3><div class="big"><span id="army">92</span></div><div class="muted">army power</div><button class="btn red" onclick="upgrade('barracks')">Train · <span id="barracksCost">230</span></button></div>
-<div class="card"><h3>💧 Aqueduct</h3><div class="big"><span id="aqueduct">1</span></div><div class="muted">health infrastructure</div><button class="btn blue" onclick="upgrade('aqueduct')">Build · <span id="aqueductCost">360</span></button></div>
-</div>
-
-<div class="card"><div class="row"><h3>Buildings & Districts</h3><span class="tag">CITY PLAN</span></div>
-<div class="grid3">
-<button class="btn" onclick="buildDistrict('market')">🛒<br>Market</button>
-<button class="btn" onclick="buildDistrict('temple')">🕯<br>Temple</button>
-<button class="btn" onclick="buildDistrict('arena')">🏟<br>Arena</button>
-</div><p class="muted">Special districts provide different bonuses and unlock events.</p></div>
-
-<div class="card"><div class="row"><h3>Senate Agenda</h3><span class="tag"><span id="agenda">0</span>/3</span></div><p class="muted">Complete three improvements to earn a major political reward.</p><div class="bar"><div id="agbar" class="fill" style="width:0%"></div></div></div>
-
-<div class="card"><div class="row"><div><h3>End the Turn</h3><div class="muted">Collect production, grow Rome and trigger world events.</div></div><button class="btn green" onclick="endTurn()">END TURN</button></div></div>
-</div>
+  <div class="row between" style="margin-bottom:8px"><div><h1>Roma</h1><div class="sub">Your living imperial capital — place and upgrade buildings.</div></div><button class="btn small" id="buildBtn">＋ Build</button></div>
+  <div class="city" id="cityBox"><div id="cityWorld"><div class="hill"></div><div class="sea"></div><div class="road r1"></div><div class="road r2"></div><div class="people">🧑‍🌾 🏛️ 🧑‍🏭 🐎 🧑‍🎨</div></div></div>
 </section>
 
-<section id="world" class="screen">
-<div class="world">
-<div class="land" style="left:7%;top:17%">ETRURIA</div><div class="land" style="left:66%;top:15%">DALMATIA</div><div class="land" style="left:9%;top:58%">CAMPANIA</div><div class="land" style="left:66%;top:65%">GRAECIA</div>
-<div class="node" style="left:41%;top:41%" onclick="region('Rome')">🏛</div>
-<div class="node enemy" style="left:16%;top:30%" onclick="region('Etruria')">⚔️</div>
-<div class="node enemy" style="left:70%;top:26%" onclick="region('Dalmatia')">⚔️</div>
-<div class="node ally" style="left:74%;top:70%" onclick="region('Graecia')">⚓</div>
-<div class="node enemy" style="left:20%;top:68%" onclick="region('Campania')">🛡</div>
-<div class="mapbox"><div class="row"><div><b id="rtitle">ITALIA</b><div class="muted" id="rtext">Choose a province to inspect its resources, diplomacy and military threat.</div></div><button class="btn" onclick="region('Etruria')">Scout</button></div></div>
-</div>
+<section id="heroes" class="screen">
+  <div class="row between"><div><h1>Heroes</h1><div class="sub">Recruit, level and equip your Roman roster.</div></div><button class="btn small" id="summonBtn">Summon</button></div>
+  <div id="heroGrid" class="grid2" style="margin-top:10px"></div>
 </section>
 
-<section id="armyScreen" class="screen">
-<div class="pad">
-<div class="card"><div class="row"><h3>Legio VII • The Iron Eagle</h3><span class="tag">VETERAN</span></div>
-<div class="unit"><div class="ico">🛡️</div><div style="flex:1"><b>Legionaries</b><div class="muted">120 heavy infantry • reliable line</div></div><b>52</b></div>
-<div class="unit"><div class="ico">🏹</div><div style="flex:1"><b>Auxilia</b><div class="muted">60 ranged • weak in melee</div></div><b>21</b></div>
-<div class="unit"><div class="ico">🐎</div><div style="flex:1"><b>Equites</b><div class="muted">30 cavalry • flanking</div></div><b>19</b></div>
-<button class="btn red" style="width:100%;margin-top:8px" onclick="battle()">CAMPAIGN · 100 🌾</button></div>
-<div class="card"><h3>Doctrine</h3><div class="grid2"><button class="btn" onclick="doctrine('Testudo')">Testudo<br><span class="small">+15% defence</span></button><button class="btn" onclick="doctrine('Cavalry')">Cavalry<br><span class="small">+12% attack</span></button></div></div>
-<div class="card"><h3>Campaign Log</h3><div id="log" class="log">Legio VII awaits orders.<br>• Rome is secure.<br>• Scouts report hostile activity.</div></div>
-</div>
+<section id="squad" class="screen">
+  <h1>Squad</h1><div class="sub">Choose five heroes for campaign battles.</div>
+  <div class="card" style="margin-top:10px"><div class="row between"><b>Squad Power</b><b id="squadPower">0</b></div><div id="squadSlots" class="grid3" style="margin-top:10px"></div></div>
+  <div class="card" style="margin-top:10px"><h3>Available heroes</h3><div id="squadRoster" class="grid2"></div></div>
 </section>
 
-<section id="senate" class="screen">
-<div class="pad">
-<div class="card"><div class="row"><h3>🏛 Senate of Rome</h3><b>Prestige <span id="prestige">120</span></b></div><p class="muted">The Republic is not one voice. Your choices shape which factions support the government.</p>
-<div class="unit"><div class="ico">🦅</div><div style="flex:1"><b>Patricians</b><div class="muted">Commerce • order • tax stability</div></div><button class="btn" onclick="senate('patricians')">Negotiate</button></div>
-<div class="unit"><div class="ico">🌾</div><div style="flex:1"><b>Plebeians</b><div class="muted">Food • wages • public works</div></div><button class="btn" onclick="senate('plebs')">Support</button></div>
-<div class="unit"><div class="ico">⚔️</div><div style="flex:1"><b>Generals</b><div class="muted">Army • conquest • honours</div></div><button class="btn" onclick="senate('generals')">Fund</button></div></div>
-<div class="card"><h3>Senate Standing</h3><div class="grid2"><div class="muted">Patrician influence<div class="bar"><div class="fill" style="width:61%"></div></div></div><div class="muted">Popular influence<div class="bar"><div class="fill" style="width:47%"></div></div></div></div></div>
-</div>
+<section id="campaign" class="screen">
+  <div class="row between"><div><h1>Campaign</h1><div class="sub">Conquer Italia and restore the Roman eagle.</div></div><span class="tag" id="campaignProg">1 / 12</span></div>
+  <div id="stageList" style="margin-top:10px"></div>
 </section>
 
-<section id="empire" class="screen">
-<div class="pad">
-<div class="card"><h3>📜 Research Tree</h3>
-<div class="tech"><div class="row"><b>Roman Roads</b><button class="btn" onclick="research('roads',180)">180🪙</button></div><div class="muted">Trade income +5% • army campaigns become safer.</div></div>
-<div class="tech" style="margin-top:8px"><div class="row"><b>Concrete Architecture</b><button class="btn" onclick="research('concrete',280)">280🪙</button></div><div class="muted">Building upgrades cost less • unlocks Monument chain.</div></div>
-<div class="tech locked" style="margin-top:8px"><div class="row"><b>Imperial Administration</b><span class="tag">LOCKED</span></div><div class="muted">Requires 300 prestige and 5 controlled provinces.</div></div></div>
-<div class="card"><h3>🏆 Legacy</h3><p class="muted">Control 5 provinces • reach 75 prosperity • build 3 special districts • survive 30 turns.</p><div class="bar"><div id="legacy" class="fill" style="width:15%"></div></div><p class="muted">Provinces <b id="controlled">1</b>/5 • Districts <b id="districts">0</b>/3 • Turns <b id="survived">0</b>/30</p></div>
-<div class="card"><h3>💾 Campaign</h3><p class="muted">Progress is saved automatically in this browser.</p><button class="btn" onclick="resetGame()">Start New Campaign</button></div>
-</div>
+<section id="arena" class="screen">
+  <div class="row between"><div><h1>Arena</h1><div class="sub">Fight simulated rival squads and climb the ladder.</div></div><div class="tag">Rank <b id="rank">42</b></div></div>
+  <div class="card" style="margin-top:10px"><h3>Rival Imperator</h3><div id="rival"></div><button class="btn" id="arenaFight" style="width:100%;margin-top:10px">Enter Arena</button></div>
+  <div class="card" style="margin-top:10px"><div class="row between"><b>Season rewards</b><span class="sub">Refreshes daily</span></div><div class="grid3" style="margin-top:8px"><div>🥇<br><b>10k</b><br><span class="sub">Gold</span></div><div>💎<br><b>250</b><br><span class="sub">Gems</span></div><div>🪙<br><b>5</b><br><span class="sub">Shards</span></div></div></div>
 </section>
 
-<div id="toast" class="toast"></div>
-<div id="modal" class="modal"><div class="modalbox"><div class="row"><h2 id="mt" style="margin:0;color:#f0ce80">Event</h2><button class="btn" onclick="closeModal()">×</button></div><p id="mx" class="muted"></p><div id="mc"></div></div></div>
+<section id="guild" class="screen">
+  <h1>Legion</h1><div class="sub">Guild systems and multiplayer foundations.</div>
+  <div class="card" style="margin-top:10px"><h3>Legio III Cyrenaica</h3><div class="row between"><span class="sub">Members 18/30</span><span class="tag">Level 7</span></div><div class="statbar" style="margin-top:8px"><i style="width:68%"></i></div><p class="sub">Donate resources, earn legion points and unlock shared bonuses.</p><button class="btn secondary" style="width:100%" id="donate">Donate 5,000 Gold</button></div>
+  <div class="card" style="margin-top:10px"><h3>World Map</h3><div class="sub">Persistent online territory wars are designed as the next backend phase. This playable build uses local rival simulations.</div><button class="btn" style="margin-top:10px;width:100%" id="worldBtn">Open Empire Map</button></div>
+</section>
 
-<nav class="bottom">
-<button class="nav on" onclick="show('city',this)"><b>🏛</b>City</button>
-<button class="nav" onclick="show('world',this)"><b>🗺</b>World</button>
-<button class="nav" onclick="show('armyScreen',this)"><b>⚔</b>Army</button>
-<button class="nav" onclick="show('senate',this)"><b>⚖</b>Senate</button>
-<button class="nav" onclick="show('empire',this)"><b>📜</b>Empire</button>
+<section id="battleScreen" class="screen">
+  <div class="row between" style="margin-bottom:8px"><button class="btn secondary small" id="retreat">← Retreat</button><div class="tag" id="battleStage">Battle</div><button class="btn secondary small" id="autoBtn">AUTO</button></div>
+  <div class="battle" id="battle">
+    <div class="battleTitle"><span>🏛️ ROMA</span><span id="turnLabel">Your turn</span></div>
+    <div class="fighters"><div class="side" id="playerUnits"></div><div class="side" id="enemyUnits"></div></div>
+    <div class="battleLog" id="battleLog">Select a skill, then tap an enemy.</div>
+    <div class="skills" id="skills"></div>
+  </div>
+</section>
+</main>
+
+<nav class="nav">
+  <button data-screen="city" class="active"><span class="ico">🏛️</span>City</button>
+  <button data-screen="campaign"><span class="ico">🗺️</span>Campaign</button>
+  <button data-screen="heroes"><span class="ico">🛡️</span>Heroes</button>
+  <button data-screen="squad"><span class="ico">👥</span>Squad</button>
+  <button data-screen="arena"><span class="ico">⚔️</span>Arena</button>
+  <button data-screen="guild"><span class="ico">🦅</span>Legion</button>
+  <button id="saveBtn"><span class="ico">💾</span>Save</button>
 </nav>
 </div>
+<div class="modal" id="modal"><div class="card" id="modalBody"></div></div>
+<div class="toast" id="toast"></div>
 
 <script>
-const base={gold:1200,food:900,pop:12480,pros:42,health:58,prestige:120,turn:1,survived:0,controlled:1,districts:0,forum:1,granary:1,barracks:1,aqueduct:1,army:92,agenda:0,doctrine:'Testudo',research:[]};
-let s=JSON.parse(localStorage.getItem('romaAeternaV3')||'null')||structuredClone(base), selected=null, currentEvent=null;
-const $=id=>document.getElementById(id);
-function save(){localStorage.setItem('romaAeternaV3',JSON.stringify(s))}
-function sync(){
-for(const k of ['gold','food','pop','pros','health','prestige','turn','survived','controlled','districts','army','agenda']) if($(k)) $(k).textContent=Math.floor(s[k]);
-$('prosbar').style.width=Math.max(0,Math.min(100,s.pros))+'%';$('tax').textContent=18+s.forum*7;$('grain').textContent=24+s.granary*8;
-$('forumCost').textContent=300+s.forum*120;$('granaryCost').textContent=260+s.granary*110;$('barracksCost').textContent=230+s.barracks*120;$('aqueductCost').textContent=360+s.aqueduct*160;
-$('citylevel').textContent=['I','II','III','IV','V'][Math.min(4,Math.floor(s.pros/25))];
-$('agbar').style.width=(s.agenda/3*100)+'%';
-let legacy=(s.controlled/5*40)+(s.pros/75*30)+(s.districts/3*15)+(s.survived/30*15);$('legacy').style.width=Math.min(100,legacy)+'%';save()
+(() => {
+const KEY="roma_aeterna_v1_save";
+const heroes=[
+{id:"caesar",name:"Julius Caesar",role:"Leader",type:"Damage",lvl:45,stars:5,power:12482,icon:"👑",hp:2600,atk:520,def:360,spd:112,skills:[["Imperial Command","buff"],["Veni Vidi Vici","hit"],["Caesar's Triumph","ult"]]},
+{id:"aurelius",name:"Marcus Aurelius",role:"Support",type:"Support",lvl:42,stars:5,power:10923,icon:"🛡️",hp:3100,atk:340,def:470,spd:98,skills:[["Stoic Guard","buff"],["Meditations","heal"],["Philosopher King","ult"]]},
+{id:"maximus",name:"Maximus",role:"Warrior",type:"Damage",lvl:40,stars:4,power:9756,icon:"⚔️",hp:2850,atk:610,def:320,spd:101,skills:[["Gladius Strike","hit"],["Blood Fury","buff"],["Arena Champion","ult"]]},
+{id:"livia",name:"Livia Drusilla",role:"Tactician",type:"Support",lvl:36,stars:4,power:8421,icon:"👸",hp:2300,atk:390,def:300,spd:126,skills:[["Poisoned Counsel","dot"],["Royal Decree","debuff"],["Augur's Favor","heal"]]},
+{id:"scipio",name:"Scipio Africanus",role:"Commander",type:"Damage",lvl:36,stars:4,power:7982,icon:"🦅",hp:2500,atk:570,def:340,spd:116,skills:[["Legion Volley","hit"],["Encircle","debuff"],["Africanus","ult"]]},
+{id:"praetorian",name:"Praetorian Guard",role:"Tank",type:"Tank",lvl:35,stars:4,power:7421,icon:"🪖",hp:3900,atk:290,def:560,spd:82,skills:[["Shield Wall","buff"],["Taunt","debuff"],["Praetorian Stand","ult"]]},
+{id:"germanicus",name:"Germanicus",role:"General",type:"Damage",lvl:33,stars:3,power:6982,icon:"🏹",hp:2200,atk:510,def:300,spd:108,skills:[["Pilum Rain","hit"],["March","buff"],["Rhine Victory","ult"]]},
+{id:"cassia",name:"Cassia Severina",role:"Cavalry",type:"Damage",lvl:31,stars:3,power:6421,icon:"🐎",hp:2100,atk:480,def:290,spd:118,skills:[["Lance Charge","hit"],["Feint","debuff"],["Thunder Ride","ult"]]},
+{id:"archer",name:"Auxiliary Archer",role:"Ranged",type:"Damage",lvl:28,stars:3,power:5902,icon:"🏹",hp:1850,atk:430,def:240,spd:110,skills:[["Arrow Volley","hit"],["Pin Down","debuff"],["Rain of Rome","ult"]]},
+{id:"gladiator",name:"Gladiator",role:"Duelist",type:"Damage",lvl:27,stars:2,power:4982,icon:"⚔️",hp:2050,atk:450,def:250,spd:103,skills:[["Slash","hit"],["Riposte","buff"],["Final Bout","ult"]]}
+];
+let state={gold:1200000,food:835000,gems:4820,energy:18,rank:42,stage:1,buildings:[
+{name:"Forum",x:18,y:18,lvl:4,icon:"🏛️"},{name:"Barracks",x:30,y:62,lvl:4,icon:"⚔️"},{name:"Temple",x:57,y:17,lvl:3,icon:"⛩️"},{name:"Colosseum",x:45,y:43,lvl:3,icon:"🏟️"},{name:"Market",x:70,y:53,lvl:2,icon:"🛒"},{name:"Academy",x:12,y:66,lvl:2,icon:"📚"},{name:"Stables",x:73,y:76,lvl:2,icon:"🐎"}
+],squad:["caesar","aurelius","maximus","scipio","praetorian"],unlocked:heroes.map(h=>h.id)};
+try{const s=JSON.parse(localStorage.getItem(KEY));if(s)state={...state,...s}}catch(e){}
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));toast("Game saved to this device.")}catch(e){toast("Save unavailable in this browser.")}}
+function toast(t){const x=$("#toast");x.textContent=t;x.style.display="block";setTimeout(()=>x.style.display="none",1800)}
+function fmt(n){return n>=1e6?(n/1e6).toFixed(1)+"M":n>=1e3?Math.round(n/1e3)+"K":String(n)}
+function hero(id){return heroes.find(h=>h.id===id)}
+function setScreen(id){$$(".screen").forEach(s=>s.classList.toggle("active",s.id===id));$$(".nav button[data-screen]").forEach(b=>b.classList.toggle("active",b.dataset.screen===id));if(id==="city")renderCity();if(id==="heroes")renderHeroes();if(id==="squad")renderSquad();if(id==="campaign")renderCampaign();if(id==="arena")renderArena()}
+$$(".nav button[data-screen]").forEach(b=>b.addEventListener("click",()=>setScreen(b.dataset.screen)));
+$("#saveBtn").addEventListener("click",save);
+function updateTop(){$("#gold").textContent=fmt(state.gold);$("#food").textContent=fmt(state.food);$("#gems").textContent=fmt(state.gems);$("#energy").textContent=state.energy}
+function renderCity(){
+const world=$("#cityWorld");world.querySelectorAll(".building").forEach(x=>x.remove());
+state.buildings.forEach((b,i)=>{const el=document.createElement("button");el.className="building";el.style.left=b.x+"%";el.style.top=b.y+"%";el.innerHTML=`<div class="roof"></div><div style="font-size:25px">${b.icon}</div><div class="bname">${b.name}</div><div class="lvl">Level ${b.lvl} • tap to upgrade</div>`;el.addEventListener("click",()=>upgradeBuilding(i));world.appendChild(el)});
 }
-function toast(t){let x=$('toast');x.textContent=t;x.style.display='block';clearTimeout(window.t);window.t=setTimeout(()=>x.style.display='none',2400)}
-function show(id,el){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$(id).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.remove('on'));el.classList.add('on')}
-function upgrade(type){
-let cost={forum:300+s.forum*120,granary:260+s.granary*110,barracks:230+s.barracks*120,aqueduct:360+s.aqueduct*160}[type];
-if(s.gold<cost)return toast('The treasury cannot afford this.');
-s.gold-=cost;s[type]++;s.agenda=Math.min(3,s.agenda+1);
-if(type==='forum'){s.pros+=4;s.pop+=300}
-if(type==='granary'){s.food+=150;s.pros+=2}
-if(type==='barracks'){s.army+=18;s.pros+=1}
-if(type==='aqueduct'){s.health+=9;s.pros+=3}
-if(s.agenda===3){s.gold+=450;s.prestige+=80;toast('Senate Agenda complete: +450 coins and +80 prestige.')}else toast(type[0].toUpperCase()+type.slice(1)+' improved.');
-sync()
+function upgradeBuilding(i){const b=state.buildings[i],cost=b.lvl*30000;if(state.gold<cost){toast("Not enough gold.");return}state.gold-=cost;b.lvl++;b.x=Math.min(82,b.x+2);toast(`${b.name} upgraded to level ${b.lvl}.`);updateTop();renderCity();save()}
+$("#buildBtn").addEventListener("click",()=>{
+showModal(`<h2>Build in Roma</h2><p class="sub">Choose a district building. Each costs 50,000 gold.</p><div class="grid2">${["Senate","Blacksmith","Aqueduct","Harbour","Villa","Garden"].map(n=>`<button class="btn secondary buildChoice" data-name="${n}" style="text-align:left">🏛️ ${n}<br><small>+city power</small></button>`).join("")}</div><button class="btn secondary" style="width:100%;margin-top:10px" id="closeM">Close</button>`);
+$$(".buildChoice").forEach(b=>b.addEventListener("click",()=>{if(state.gold<50000){toast("Not enough gold.");return}state.gold-=50000;state.buildings.push({name:b.dataset.name,x:10+Math.random()*72,y:10+Math.random()*76,lvl:1,icon:"🏛️"});closeModal();updateTop();renderCity();save()}));$("#closeM").addEventListener("click",closeModal)
+});
+function renderHeroes(){
+$("#heroGrid").innerHTML=heroes.map(h=>`<div class="card heroCard"><div class="heroArt ${h.id==="livia"?"woman":""}">${h.icon}</div><div class="rarity">${"★".repeat(h.stars)}${"☆".repeat(5-h.stars)}</div><div class="heroName">${h.name}</div><div class="heroMeta">${h.role} • Lv ${h.lvl} • Power ${fmt(h.power)}</div><div class="row" style="margin-top:8px"><button class="btn small upgradeHero" data-id="${h.id}">Upgrade</button><button class="btn secondary small heroInfo" data-id="${h.id}">Details</button></div></div>`).join("");
+$$(".upgradeHero").forEach(b=>b.addEventListener("click",()=>upgradeHero(b.dataset.id)));
+$$(".heroInfo").forEach(b=>b.addEventListener("click",()=>heroDetails(b.dataset.id)));
 }
-function buildDistrict(type){
-let cost={market:380,temple:320,arena:600}[type];
-if(s.gold<cost)return toast('Need '+cost+' coins.');
-if((type==='arena')&&s.pros<55)return toast('The Arena requires 55 prosperity.');
-s.gold-=cost;s.districts++;s.agenda=Math.min(3,s.agenda+1);
-if(type==='market'){s.gold+=80;s.pros+=4;toast('Market district opened: commerce grows.')}
-if(type==='temple'){s.prestige+=28;s.pros+=3;toast('Temple consecrated: prestige rises.')}
-if(type==='arena'){s.prestige+=50;s.pros+=7;s.army+=6;toast('Arena completed: Rome celebrates!')}
-sync()
+function upgradeHero(id){const h=hero(id),cost=h.lvl*650;if(state.gold<cost){toast("Not enough gold.");return}state.gold-=cost;h.lvl++;h.power+=Math.round(170+h.lvl*4);h.hp+=70;h.atk+=15;h.def+=10;toast(`${h.name} reached level ${h.lvl}.`);updateTop();renderHeroes();renderSquad();save()}
+function heroDetails(id){const h=hero(id);showModal(`<h2>${h.name}</h2><div class="sub">${h.role} • ${h.type} • Level ${h.lvl}</div><div class="heroArt ${h.id==="livia"?"woman":""}" style="margin-top:10px">${h.icon}</div><div class="grid2" style="margin-top:10px"><div class="card">❤️ Health<br><b>${h.hp}</b></div><div class="card">⚔️ Attack<br><b>${h.atk}</b></div><div class="card">🛡️ Defence<br><b>${h.def}</b></div><div class="card">⚡ Speed<br><b>${h.spd}</b></div></div><h3 style="margin-top:12px">Abilities</h3><div>${h.skills.map((s,i)=>`<div class="card" style="margin:6px 0"><b>${i+1}. ${s[0]}</b><div class="sub">${s[1]==="hit"?"Direct damage":s[1]==="heal"?"Restore ally health":s[1]==="buff"?"Team buff":s[1]==="debuff"?"Enemy debuff":s[1]==="dot"?"Damage over time":"Ultimate ability"}</div></div>`).join("")}</div><button class="btn secondary" style="width:100%;margin-top:10px" id="closeM">Close</button>`);$("#closeM").addEventListener("click",closeModal)}
+function renderSquad(){
+let power=state.squad.reduce((n,id)=>n+hero(id).power,0);$("#squadPower").textContent=power.toLocaleString();
+$("#squadSlots").innerHTML=state.squad.map((id,i)=>{const h=hero(id);return `<div class="card" style="text-align:center"><div style="font-size:30px">${h.icon}</div><b>${h.name.split(" ")[0]}</b><div class="sub">Slot ${i+1}</div><button class="btn danger small remove" data-i="${i}" style="margin-top:5px">Remove</button></div>`}).join("");
+$("#squadRoster").innerHTML=heroes.map(h=>`<button class="card addHero" data-id="${h.id}" style="text-align:left"><div class="row"><span style="font-size:28px">${h.icon}</span><span><b>${h.name}</b><br><span class="sub">Lv ${h.lvl} • ${fmt(h.power)}</span></span></div></button>`).join("");
+$$(".remove").forEach(b=>b.addEventListener("click",()=>{state.squad.splice(+b.dataset.i,1);renderSquad();save()}));
+$$(".addHero").forEach(b=>b.addEventListener("click",()=>{if(state.squad.includes(b.dataset.id)){toast("Already in squad.");return}if(state.squad.length>=5){toast("Squad is full.");return}state.squad.push(b.dataset.id);renderSquad();save()}))
 }
-function endTurn(){
-s.turn++;s.survived++;s.gold+=18+s.forum*7+(s.research.includes('roads')?Math.floor((18+s.forum*7)*.05):0);s.food+=24+s.granary*8;s.pop+=Math.floor(70+s.health*2);
-if(s.food<450){s.pros=Math.max(0,s.pros-2);s.pop=Math.max(100,s.pop-150);toast('⚠ Grain shortage!')}else{s.pros=Math.min(100,s.pros+1)}
-if(Math.random()<.48)event();else toast('Turn '+s.turn+': production collected.');
-sync()
-}
-function region(r){
-selected=r;$('rtitle').textContent=r.toUpperCase();
-const d={Rome:'Your capital: prosperous, defended and connected to the whole Republic.',Etruria:'Metal and mountain passes. Hostile garrisons guard the frontier. Victory grants a permanent army bonus.',Dalmatia:'Timber and Adriatic ports. A difficult campaign with valuable trade potential.',Graecia:'A wealthy maritime power. Diplomacy may open trade instead of war.',Campania:'Fertile farmland. Control greatly improves food production.'}[r];$('rtext').textContent=d;
-if(r!=='Rome'){$('mc').innerHTML='<button class="btn choice" onclick="provinceAction()">Interact with '+r+'</button><button class="btn choice" onclick="closeModal()">Close</button>';$('mt').textContent=r;$('mx').textContent=d;$('modal').style.display='flex'}
-}
-function provinceAction(){
-if(selected==='Graecia'){s.gold+=220;s.prestige+=15;toast('Trade treaty signed with Graecia. +220 coins.')}
-else if(selected==='Campania'){s.food+=500;s.controlled=Math.min(5,s.controlled+1);s.prestige+=20;toast('Campania joins Rome. +500 food.')}
-else {battleProvince(selected)}
-closeModal();sync()
-}
-function battleProvince(name){
-let enemy={Etruria:70,Dalmatia:90}[name]||75, attack=s.army+(s.doctrine==='Cavalry'?12:0)+Math.random()*25;
-if(s.research.includes('roads')) attack+=8;
-if(attack>enemy){s.controlled=Math.min(5,s.controlled+1);s.prestige+=35;s.gold+=280;s.army=Math.max(30,s.army-8);log('Victory in '+name+'. The eagle flies over a new province.');toast('VICTORY — '+name+' is under Roman control.')}
-else{s.army=Math.max(25,s.army-20);s.prestige=Math.max(0,s.prestige-12);toast('Defeat at '+name+'. The legion retreats.')}
-}
-function battle(){
-if(s.food<100)return toast('Not enough food for a campaign.');
-s.food-=100;let enemy=60+Math.random()*45, attack=s.army+(s.doctrine==='Cavalry'?12:5)+(s.research.includes('roads')?8:0)+Math.random()*25;
-$('mt').textContent='Frontier Battle';$('mx').innerHTML='Roman power: <b>'+Math.floor(attack)+'</b><br>Enemy power: <b>'+Math.floor(enemy)+'</b><br><br>Choose to commit the legion.';
-$('mc').innerHTML='<button class="btn red choice" onclick="resolveBattle('+attack+','+enemy+')">COMMIT TO BATTLE</button><button class="btn choice" onclick="closeModal()">Withdraw</button>';$('modal').style.display='flex'
-}
-function resolveBattle(a,b){if(a>b){s.gold+=260;s.prestige+=30;s.controlled=Math.min(5,s.controlled+1);s.army=Math.max(30,s.army-7);log('Frontier victory. A province has been brought into Roman control.');toast('VICTORY!')}else{s.gold=Math.max(0,s.gold-150);s.prestige=Math.max(0,s.prestige-15);s.army=Math.max(25,s.army-18);log('The legion suffers losses and retreats.');toast('DEFEAT. The frontier remains hostile.')}closeModal();sync()}
-function doctrine(d){s.doctrine=d;s.prestige+=5;toast(d+' doctrine adopted.');sync()}
-function senate(w){if(w==='patricians'){s.gold+=180;s.pros=Math.max(0,s.pros-1);toast('Patrician merchants provide +180 coins.')}if(w==='plebs'){s.food+=230;s.pros+=4;toast('The grain dole improves public mood.')}if(w==='generals'){s.gold=Math.max(0,s.gold-100);s.army+=22;s.prestige+=22;toast('Generals receive funding and raise troops.')}sync()}
-function research(name,cost){if(s.research.includes(name))return toast('Already researched.');if(s.gold<cost)return toast('Not enough coins.');s.gold-=cost;s.research.push(name);s.prestige+=18;s.pros+=2;toast('Research completed: '+name+'.');sync()}
-function log(t){let x=$('log');x.innerHTML+='&lt;br&gt;• '+t;x.scrollTop=x.scrollHeight}
-function event(){
-const ev=[
-['The Etruscan Envoy','A merchant delegation offers a lucrative trade route.',['Accept · +300🪙','Refuse · +10 prestige'],['trade','refuse']],
-['Bread for Rome','A poor harvest threatens the streets.',['Import · -180🪙, +450🌾','Ration · -3 prosperity'],['grain','ration']],
-['A General’s Ambition','Your commander requests resources for a major offensive.',['Fund · -250🪙, +30 prestige','Decline · keep resources'],['fund','decline']],
-['Festival of Saturnalia','A festival could unite the city.',['Celebrate · -160🪙, +6 prosperity','Cancel · +50🪙, -2 prosperity'],['celebrate','cancel']],
-['A Plague Rumour','A frightened crowd demands immediate action.',['Fund sanitation · -220🪙, +8 health','Do nothing · -4 prosperity'],['health','ignore']]
-];currentEvent=ev[Math.floor(Math.random()*ev.length)];$('mt').textContent=currentEvent[0];$('mx').textContent=currentEvent[1];$('mc').innerHTML=currentEvent[2].map((x,i)=>`<button class="btn choice" onclick="eventChoice(${i})">${x}</button>`).join('');$('modal').style.display='flex'
-}
-function eventChoice(i){let k=currentEvent[3][i];
-if(k==='trade'){s.gold+=300;s.prestige+=8}else if(k==='refuse'){s.prestige+=10}else if(k==='grain'){if(s.gold<180)return toast('Not enough coins.');s.gold-=180;s.food+=450}else if(k==='ration'){s.pros=Math.max(0,s.pros-3)}else if(k==='fund'){if(s.gold<250)return toast('Not enough coins.');s.gold-=250;s.prestige+=30;s.army+=8}else if(k==='decline'){}else if(k==='celebrate'){if(s.gold<160)return toast('Not enough coins.');s.gold-=160;s.pros+=6}else if(k==='cancel'){s.gold+=50;s.pros=Math.max(0,s.pros-2)}else if(k==='health'){if(s.gold<220)return toast('Not enough coins.');s.gold-=220;s.health+=8;s.pros+=2}else if(k==='ignore'){s.pros=Math.max(0,s.pros-4)}
-closeModal();toast('The decision will shape Rome.');sync()
-}
-function closeModal(){$('modal').style.display='none'}
-function resetGame(){if(confirm('Start a completely new Roman campaign?')){s=structuredClone(base);sync();toast('New campaign begun.')}}
-sync();
+const stages=["Rome","Veii","Capua","Tarentum","Samnium","Apulia","Sicily","Sardinia","Illyria","Macedonia","Achaea","Triumph"];
+function renderCampaign(){ $("#campaignProg").textContent=`${state.stage} / ${stages.length}`;$("#stageList").innerHTML=stages.map((n,i)=>{const unlocked=i<state.stage;return `<div class="card" style="margin-bottom:8px;opacity:${unlocked?1:.55}"><div class="row between"><div><b>${i+1}. ${n}</b><div class="sub">${unlocked?"Enemy legion detected.":"Clear the previous region to unlock."}</div></div><button class="btn small stageBtn" data-i="${i}" ${i>state.stage-1?"disabled":""}>${i===state.stage-1?"BATTLE":"Replay"}</button></div></div>`}).join("");$$(".stageBtn").forEach(b=>b.addEventListener("click",()=>startBattle(+b.dataset.i,false)))}
+function startBattle(stageIndex,arena=false){if(!arena&&stageIndex!==state.stage-1){toast("That stage is not unlocked.");return}if(!arena&&state.energy<=0){toast("No energy. Complete another mode or wait for refill.");return}if(!arena)state.energy--;const ids=state.squad.length?state.squad:["caesar","aurelius","maximus"];battle={arena,stageIndex,player:ids.map(id=>({...hero(id),curHp:hero(id).hp,maxHp:hero(id).hp,alive:true,ult:0})),enemy:makeEnemies(stageIndex,arena),turn:0,selectedSkill:null,selectedTarget:null,auto:false,log:"Choose a skill, then an enemy target."};setScreen("battleScreen");renderBattle();updateTop()}
+function makeEnemies(stage,arena){const base=arena?state.squad.map((id,i)=>{const h=hero(id);return {...h,name:"Rival "+h.name,icon:["🗡️","🛡️","🏹","🐎","🪖"][i%5],power:Math.round(h.power*(.82+Math.random()*.25)),curHp:Math.round(h.hp*.9),maxHp:Math.round(h.hp*.9),alive:true,ult:0}}):["Rebel Legion","Samnite Guard","Pirate Captain","Carthaginian Veteran","Macedonian Spear"].map((n,i)=>({name:n,role:"Enemy",icon:["⚔️","🪖","🏹","🐎","🗡️"][i],lvl:10+stage*2,stars:2,power:1800+stage*450+i*120,hp:1500+stage*180+i*90,atk:260+stage*30+i*10,def:180+stage*20,spd:70+i*7,curHp:1500+stage*180+i*90,maxHp:1500+stage*180+i*90,alive:true,ult:0,skills:[["Strike","hit"],["Rally","buff"],["Assault","ult"]]}));return base}
+let battle=null;
+function renderBattle(){if(!battle)return;$("#battleStage").textContent=battle.arena?"Arena":"Campaign • "+stages[battle.stageIndex];$("#playerUnits").innerHTML=battle.player.map((u,i)=>unitHTML(u,i,false)).join("");$("#enemyUnits").innerHTML=battle.enemy.map((u,i)=>unitHTML(u,i,true)).join("");$$(".enemy.unit").forEach((el)=>el.addEventListener("click",()=>selectTarget(+el.dataset.i)));renderSkills();$("#battleLog").textContent=battle.log}
+function unitHTML(u,i,enemy){const pct=Math.max(0,Math.round(u.curHp/u.maxHp*100));return `<div class="unit ${enemy?"enemy":""} ${u.alive?"":"dead"} ${battle.selectedTarget===i&&enemy?"target":""}" data-i="${i}"><div class="portrait">${u.icon}</div><div class="uName">${u.name.split(" ").slice(0,2).join(" ")}</div><div class="hp"><i style="width:${pct}%"></i></div><span class="turn">${u.alive?"Lv "+u.lvl:"Fallen"}</span></div>`}
+function renderSkills(){const active=battle.player.findIndex(u=>u.alive);const u=battle.player[active];$("#skills").innerHTML=u?[...u.skills.map((s,i)=>`<button class="skill" data-skill="${i}"><b>${s[0]}</b><small>${i===2?"Ultimate":"Ability"}</small></button>`),`<button class="skill" data-skill="auto"><b>Basic Attack</b><small>Quick strike</small></button>`].join(""):"";$$(".skill").forEach(b=>b.addEventListener("click",()=>{const s=b.dataset.skill;if(s==="auto"){battle.selectedSkill={name:"Basic Attack",type:"hit",index:0};battle.log="Basic Attack selected. Tap an enemy.";return renderBattle()}const sk=u.skills[+s];battle.selectedSkill={name:sk[0],type:sk[1],index:+s};battle.log=`${u.name}: ${sk[0]} selected. Tap a target.`;renderBattle()}))}
+function selectTarget(i){if(!battle.selectedSkill){battle.log="Pick an ability first.";return renderBattle()}if(!battle.enemy[i].alive){battle.log="That enemy has fallen.";return renderBattle()}doPlayerAction(i)}
+function doPlayerAction(i){const p=battle.player.find(u=>u.alive);if(!p)return;const e=battle.enemy[i];const type=battle.selectedSkill.type;let msg="";if(type==="hit"||type==="ult"){let dmg=Math.max(80,Math.round(p.atk*(type==="ult"?1.8:1)*(0.85+Math.random()*.3)-e.def*.25));e.curHp=Math.max(0,e.curHp-dmg);msg=`${p.name} used ${battle.selectedSkill.name} for ${dmg} damage.`;if(type==="ult")p.ult=0}else if(type==="debuff"){e.def=Math.max(0,Math.round(e.def*.82));e.curHp=Math.max(0,e.curHp-Math.round(p.atk*.5));msg=`${p.name} weakened ${e.name}.`}else if(type==="dot"){e.curHp=Math.max(0,e.curHp-Math.round(p.atk*.75));msg=`${p.name} poisoned ${e.name}.`}else if(type==="heal"){const low=battle.player.filter(u=>u.alive).sort((a,b)=>a.curHp/a.maxHp-b.curHp/b.maxHp)[0];const heal=Math.round(p.atk*1.3);low.curHp=Math.min(low.maxHp,low.curHp+heal);msg=`${p.name} restored ${heal} health to ${low.name}.`}else{battle.player.forEach(x=>{if(x.alive)x.atk=Math.round(x.atk*1.08)});msg=`${p.name} strengthened the legion.`}
+battle.selectedSkill=null;battle.selectedTarget=null;checkDeaths();battle.log=msg;renderBattle();if(checkWin())return;setTimeout(enemyTurn,420)}
+function enemyTurn(){if(!battle)return;const enemies=battle.enemy.filter(u=>u.alive);if(!enemies.length)return;const e=enemies[Math.floor(Math.random()*enemies.length)];const targets=battle.player.filter(u=>u.alive);if(!targets.length)return;const t=targets[Math.floor(Math.random()*targets.length)];const dmg=Math.max(60,Math.round(e.atk*(.82+Math.random()*.35)-t.def*.18));t.curHp=Math.max(0,t.curHp-dmg);battle.log=`${e.name} struck ${t.name} for ${dmg} damage.`;checkDeaths();renderBattle();if(checkWin())return;if(battle.auto)setTimeout(()=>autoTurn(),350)}
+function checkDeaths(){[...battle.player,...battle.enemy].forEach(u=>{if(u.curHp<=0)u.alive=false})}
+function checkWin(){const lose=battle.player.every(u=>!u.alive),win=battle.enemy.every(u=>!u.alive);if(!win&&!lose)return false;if(win){const reward=7000+(battle.stageIndex+1)*1200;state.gold+=reward;state.gems+=battle.arena?40:8;if(!battle.arena){state.stage=Math.max(state.stage,battle.stageIndex+2);state.food+=2500}battle.log=`VICTORY! +${fmt(reward)} gold.`;renderBattle();setTimeout(()=>{showModal(`<h2>🏆 Victory</h2><p>You defeated the opposing legion.</p><div class="grid2"><div class="card">🪙 Gold<br><b>+${fmt(reward)}</b></div><div class="card">💎 Gems<br><b>+${battle.arena?40:8}</b></div></div><button class="btn" style="width:100%;margin-top:10px" id="continue">Continue</button>`);$("#continue").addEventListener("click",()=>{closeModal();setScreen(battle.arena?"arena":"campaign");save();updateTop()})},500);return true}else{battle.log="DEFEAT — rebuild your squad and try again.";renderBattle();setTimeout(()=>showModal(`<h2>Defeat</h2><p>The enemy legion survived. Upgrade your heroes or change your squad.</p><button class="btn" style="width:100%" id="continue">Continue</button>`),500);setTimeout(()=>$("#continue")?.addEventListener("click",()=>{closeModal();setScreen(battle.arena?"arena":"campaign")}),550);return true}}
+function autoTurn(){if(!battle)return;const p=battle.player.find(u=>u.alive);const e=battle.enemy.find(u=>u.alive);if(!p||!e)return;const skill=p.skills[p.ult>=100?2:0];battle.selectedSkill={name:skill[0],type:skill[1],index:0};doPlayerAction(battle.enemy.indexOf(e))}
+$("#autoBtn").addEventListener("click",()=>{if(!battle)return;battle.auto=!battle.auto;$("#autoBtn").textContent=battle.auto?"AUTO ON":"AUTO";if(battle.auto)autoTurn()});
+$("#retreat").addEventListener("click",()=>{battle=null;setScreen("campaign")});
+function renderArena(){const rivalPower=state.squad.reduce((n,id)=>n+hero(id).power,0)*(.8+Math.random()*.35);$("#rival").innerHTML=`<div class="row between"><div><b>Legatus Valerian</b><div class="sub">Roman Rival • Rank ${Math.max(1,state.rank-3)}</div></div><div style="text-align:right"><b>${Math.round(rivalPower).toLocaleString()}</b><div class="sub">Power</div></div></div>`}
+$("#arenaFight").addEventListener("click",()=>startBattle(0,true));
+$("#donate").addEventListener("click",()=>{if(state.gold<5000){toast("Not enough gold.");return}state.gold-=5000;state.gems+=5;toast("Legion donation complete. +5 gems.");updateTop();save()});
+$("#worldBtn").addEventListener("click",()=>{showModal(`<h2>Empire Map</h2><div class="worldMap"><div class="land italy"></div><div class="land island sicily"></div><div class="land island sardinia"></div><div class="node n1"><b>ROMA</b><br>Capital</div><div class="node n2"><b>ETRURIA</b><br>Conquered</div><div class="node n3"><b>CAMPANIA</b><br>Locked</div><div class="node n4"><b>SICILIA</b><br>Locked</div><div class="node n5"><b>DALMATIA</b><br>Locked</div></div><p class="sub">This version includes the playable map layer. True online player cities, alliances and server-validated PvP require a backend and account system.</p><button class="btn secondary" style="width:100%" id="closeM">Close</button>`);$("#closeM").addEventListener("click",closeModal)});
+$("#summonBtn").addEventListener("click",()=>{if(state.gems<250){toast("Need 250 gems.");return}state.gems-=250;const pool=heroes.filter(h=>!state.squad.includes(h.id));const h=pool[Math.floor(Math.random()*pool.length)]||heroes[Math.floor(Math.random()*heroes.length)];if(!state.unlocked.includes(h.id))state.unlocked.push(h.id);toast(`Summoned ${h.name}!`);updateTop();renderHeroes();save()});
+function showModal(html){$("#modalBody").innerHTML=html;$("#modal").classList.add("show")}function closeModal(){$("#modal").classList.remove("show")}
+renderCity();renderHeroes();renderSquad();renderCampaign();renderArena();updateTop();
+})();
 </script>
 </body>
 </html>
